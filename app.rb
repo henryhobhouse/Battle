@@ -13,5 +13,11 @@ class Battleapp < Sinatra::Base
     erb(:play)
   end
 
+  post '/' do
+    @player_one = params[:player_one]
+    @player_two = params[:player_two]
+    erb(:index)
+  end
+
   run! if app_file == $0
 end
