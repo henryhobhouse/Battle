@@ -3,7 +3,7 @@
 # We want to Start a fight by entering our Names and seeing them
 
 feature "'/' will have form that will output results to page" do
-  scenario 'checks that form submits results to server' do
+  scenario 'checks that form submits results and posts to names page' do
     visit('/')
     fill_in('player_one', :with => 'Anthony')
     fill_in('player_two', :with => 'Henry')
