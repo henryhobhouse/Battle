@@ -4,7 +4,13 @@ class Battleapp < Sinatra::Base
   set :sessions, true
 
   get '/' do
-    'Testing infrastructure working!'
+    erb(:index)
+  end
+
+  post '/' do
+    @player_one = params[:player_one]
+    @player_two = params[:player_two]
+    erb(:index)
   end
 
   run! if app_file == $0
