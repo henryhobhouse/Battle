@@ -2,6 +2,16 @@
 # So we can play a personalised game of Battle,
 # We want to Start a fight by entering our Names and seeing them
 
+feature "'/' will have form that will output results to page" do
+  scenario 'checks that form submits results to server' do
+    visit('/')
+    fill_in('player_one', :with => 'Anthony')
+    fill_in('player_two', :with => 'Henry')
+    find_button('submit').click
+    expect(page).to have_content('Anthony vs Henry')
+  end
+end
+
 # As Player 1,
 # So I can see how close I am to winning
 # I want to see Player 2's Hit Points
