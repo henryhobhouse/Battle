@@ -16,14 +16,14 @@ class Battleapp < Sinatra::Base
   end
 
   post '/' do
-    $player_one = Player.new(params[:player_one])
-    $player_two = Player.new(params[:player_two])
+    player_one = Player.new(params[:player_one])
+    player_two = Player.new(params[:player_two])
+    $game = Game.new(player_one, player_two)
     redirect "/play"
   end
 
   get '/fight' do
-    @game = Game.new
-    @game.attack($player_two)
+    $game.attack($game.player_two)
     erb :fight
   end
 
