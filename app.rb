@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require './lib/player.rb'
+require './spec/features/web_helpers.rb'
 
 class Battleapp < Sinatra::Base
   enable :sessions
@@ -19,6 +20,10 @@ class Battleapp < Sinatra::Base
     session[:player_one] = Player.new(params[:player_one])
     session[:player_two] = Player.new(params[:player_two])
     redirect "/play"
+  end
+
+  get '/fight' do
+    erb :fight
   end
 
   run! if app_file == $0

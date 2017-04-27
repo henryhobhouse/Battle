@@ -3,10 +3,7 @@
 # We want to Start a fight by entering our Names and seeing them
 feature "'/' will have form that will output results to page" do
   scenario 'checks that form submits results and posts to names page' do
-    visit('/')
-    fill_in('player_one', :with => 'Anthony')
-    fill_in('player_two', :with => 'Henry')
-    find_button('submit').click
+    sign_in_and_play
     expect(page).to have_content('Anthony' && 'Henry')
   end
 end
@@ -16,10 +13,7 @@ end
 # I want to see Player 2's Hit Points
 feature " /play will show player two HP points and will update when changed" do
   scenario 'checks that /play has HP attribute that refreshes on change' do
-    visit('/')
-    fill_in('player_one', :with => 'Anthony')
-    fill_in('player_two', :with => 'Henry')
-    find_button('submit').click
+    sign_in_and_play
     expect(page).to have_content('Henry - 60HP')
   end
 end
@@ -27,6 +21,20 @@ end
 # As Player 1,
 # So I can win a game of Battle,
 # I want to attack Player 2, and I want to get a confirmation
+feature "Player one can attack player two and recieves confirmation" do
+
+  scenario 'checks there is a button for player one to attack' do
+  sign_in_and_play
+  expect(page).to have_button('attack')
+  end
+
+  scenario 'attack submit gives confirmation of attack' do
+  sign_in_and_play
+  find_button('attack').click
+  expect(page).to have_content('Henry has been attacked!')
+  end
+
+end
 
 # As Player 1,
 # So I can start to win a game of Battle,
