@@ -5,7 +5,6 @@ describe Player do
   end
 
   it 'deducts 10 health points' do
-    p subject.health
-    expect{subject.deduct}.to change{subject.health}.by(-10)
+    expect{subject.deduct_health}.to change{subject.health}.by(-10)
   end
 end

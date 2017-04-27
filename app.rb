@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require './lib/player.rb'
+require './lib/game.rb'
 require './spec/features/web_helpers.rb'
 
 class Battleapp < Sinatra::Base
@@ -21,6 +22,8 @@ class Battleapp < Sinatra::Base
   end
 
   get '/fight' do
+    @game = Game.new
+    @game.attack($player_two)
     erb :fight
   end
 

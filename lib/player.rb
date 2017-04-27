@@ -8,7 +8,7 @@ class Player
     @name = name
   end
 
-  def deduct
+  def deduct_health
     @health -= 10
   end
 end
