@@ -1,8 +1,7 @@
 # holds attributes of player
 class Player
 
-  attr_accessor :health
-  attr_reader :name
+  attr_reader :name, :health
 
   def initialize(name)
     @health = 60
