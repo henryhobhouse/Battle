@@ -1,20 +1,28 @@
 # As two Players,
 # So we can play a personalised game of Battle,
 # We want to Start a fight by entering our Names and seeing them
-
 feature "'/' will have form that will output results to page" do
   scenario 'checks that form submits results and posts to names page' do
     visit('/')
     fill_in('player_one', :with => 'Anthony')
     fill_in('player_two', :with => 'Henry')
     find_button('submit').click
-    expect(page).to have_content('Anthony vs Henry')
+    expect(page).to have_content('Anthony' && 'Henry')
   end
 end
 
 # As Player 1,
 # So I can see how close I am to winning
 # I want to see Player 2's Hit Points
+feature " /play will show player two HP points and will update when changed" do
+  scenario 'checks that /play has HP attribute that refreshes on change' do
+    visit('/')
+    fill_in('player_one', :with => 'Anthony')
+    fill_in('player_two', :with => 'Henry')
+    find_button('submit').click
+    expect(page).to have_content('Henry - 60HP')
+  end
+end
 
 # As Player 1,
 # So I can win a game of Battle,
