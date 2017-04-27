@@ -3,7 +3,9 @@
   </head>
   <body>
     <div>
-      <h1> <%= $player_two.name %> has been attacked! </h1>
+      <% $player_two.deduct %>
+      <h1> <%= $player_two.name %> has been attacked!</h1>
+      <h3> Current Health - <%= $player_two.health %>HP </h3>
     </div>
   </body>
 </html>
