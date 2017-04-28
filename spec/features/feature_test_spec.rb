@@ -31,7 +31,7 @@ feature "Player one can attack player two and recieves confirmation" do
   scenario 'attack submit gives confirmation of attack' do
   sign_in_and_play
   find_button('attack').click
-  expect(page).to have_content('Henry has been attacked!')
+  expect(page).to have_content('Henry - 50HP')
   end
 
 end
@@ -44,7 +44,7 @@ feature "To attack player two will reduce their HP by 10" do
   scenario 'upon submission of attack button, player_two HP to -10' do
     sign_in_and_play
     find_button('attack').click
-    expect(page).to have_content('Current Health - 50HP')
+    expect(page).to have_content('50HP')
   end
 end
 

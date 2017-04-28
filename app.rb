@@ -23,8 +23,10 @@ class Battleapp < Sinatra::Base
   end
 
   get '/fight' do
-    $game.attack($game.player_two)
+    $game.player_turn_swap
+    $game.attack($game.player_turn)
     erb :fight
+    redirect "/play"
   end
 
   run! if app_file == $0
