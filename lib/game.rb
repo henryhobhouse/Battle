@@ -13,17 +13,17 @@ class Game
     player.deduct_health
   end
 
-  def save
-    @@instance_capture = self
-  end
-
-  def self.load
-    @@instance_capture
-  end
-
   def player_turn_swap
     if @player_turn == @player_one; @player_turn = @player_two
     else @player_turn = @player_one; end
+  end
+
+  def self.create(player_one, player_two)
+      @instance_capture = Game.new(player_one, player_two)
+  end
+
+  def self.load
+    @instance_capture
   end
 
 end

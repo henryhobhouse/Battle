@@ -6,5 +6,11 @@
       <h1> <%= @game.player_turn.name %> has Died!</h1>
       <h3> Current Health - <%= @game.player_turn.health %>HP </h3>
     </div>
+    <div>
+      <form action="/" method="get">
+        <div>   
+          <input type="submit" id="submit" value='NEW GAME?'>
+        </div>
+      </form>
   </body>
 </html>
