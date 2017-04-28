@@ -3,12 +3,12 @@
   </head>
   <body>
     <div>
-      <h1> <%= $game.player_one.name %> - <%= $game.player_one.health %>HP vs <%= $game.player_two.name %> - <%= $game.player_two.health %>HP </h1>
+      <h1> <%= @game.player_one.name %> - <%= @game.player_one.health %>HP vs <%= @game.player_two.name %> - <%= @game.player_two.health %>HP </h1>
     </div>
     <div>
       <form action="/fight" method="get">
         <div>
-          <label><%= $game.player_turn.name %>'s Turn!</label>
+          <label><%= @game.player_turn.name %>'s Turn!</label>
           <input type="submit" id="submit" value='attack'>
         </div>
       </form>
