@@ -29,17 +29,14 @@ class Battleapp < Sinatra::Base
 
   get '/vscomp' do
     erb :vscomp
-    @game.player_turn_swap
-    @game.attack(@game.player_turn)
-    @player_health = @game.player_turn.health
-    @player_health <= 0 ? ( redirect "/game-over" ) : ( redirect "/player" )
+    @game.process_attack
+    @game.player_turn.health <= 0 ? ( redirect "/game-over" ) :
+    ( redirect "/player" )
   end
 
   get '/fight' do
-    @game.player_turn_swap
-    @game.attack(@game.player_turn)
-    @player_health = @game.player_turn.health
-    @player_health <= 0 ? ( redirect "/game-over" ) :
+    @game.process_attack
+    @game.player_turn.health <= 0 ? ( redirect "/game-over" ) :
     @game.is_computer == @game.player_turn.name ? ( redirect '/vscomp' ) :
     ( redirect '/player' )
   end
