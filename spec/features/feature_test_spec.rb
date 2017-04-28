@@ -89,12 +89,10 @@ feature 'Because I am lonely I would like to play the computer' do
     visit('/')
     fill_in('player_one', :with => 'Sulaiman')
     find_button('submit').click
-    expect(page).to have_content('Sulaiman - 46HP')
+    find_button('attack').click
+    expect(page).to have_content('Sulaiman - 26HP')
   end
 end
-
-
-
 
 # As a Player,
 # So I can enjoy a game of Battle with more variety,
