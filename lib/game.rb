@@ -13,6 +13,10 @@ class Game
     player.deduct_health
   end
 
+  def is_computer
+    @player_two.name == 'CUNNING AI' ? @player_two.name : nil
+  end
+
   def player_turn_swap
     if @player_turn == @player_one; @player_turn = @player_two
     else @player_turn = @player_one; end
