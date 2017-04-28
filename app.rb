@@ -25,8 +25,11 @@ class Battleapp < Sinatra::Base
   get '/fight' do
     $game.player_turn_swap
     $game.attack($game.player_turn)
-    erb :fight
-    redirect "/play"
+    $game.player_turn.health <= 0 ? ( redirect "/game-over" ) : ( redirect "/play" )
+  end
+
+  get '/game-over' do
+    erb :game_over
   end
 
   run! if app_file == $0

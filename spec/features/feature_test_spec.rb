@@ -52,6 +52,14 @@ end
 # So we can continue our game of Battle,
 # We want to switch turns
 
+feature 'Player turn will change after attack' do
+  scenario 'after player_one attacks, player_two has turn' do
+    sign_in_and_play
+    find_button('attack').click
+    expect(page).to have_content("Henry's Turn!")
+  end
+end
+
 # As Player 1,
 # So I can see how close I am to losing,
 # I want to see my own hit points
@@ -67,3 +75,11 @@ end
 # As a Player,
 # So I can Lose a game of Battle,
 # I want to see a 'Lose' message if I reach 0HP first
+
+feature 'Player will lose once health is below or equal to 0' do
+  scenario 'After six attacks on player two, they will lose' do
+    sign_in_and_play
+    11.times { find_button('attack').click }
+    expect(page).to have_content('Henry has Died!')
+  end
+end
